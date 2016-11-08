@@ -15,6 +15,10 @@
 | Route.resource('user', 'UserController')
 */
 
-const Route = use('Route')
+const Route = use('Route');
 
-Route.on('/').render('welcome')
+Route.on('/').render('welcome');
+
+// Make the Application respond to "sign-up" urls
+Route.get('/sign-up', 'UserController.create');
+Route.post('/sign-up', 'UserController.store');
