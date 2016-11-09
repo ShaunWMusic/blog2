@@ -17,7 +17,9 @@
 
 const Route = use('Route');
 
-Route.on('/').render('welcome');
+// Show the welcome page if the user is logged in
+// If not logged in throw an error
+Route.on('/').render('welcome').middleware('auth');
 
 // Make the Application respond to "sign-up" urls
 Route.get('/sign-up', 'UserController.create');

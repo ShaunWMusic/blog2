@@ -12,6 +12,12 @@ const Http = exports = module.exports = {}
  * @param  {Object} response
  */
 Http.handleError = function * (error, request, response) {
+  if (error.name === 'InvalidLoginException') {
+    yield request.with({ error: 'You must be logged in to see that!' }).flash();
+
+    return response.redirect('/login');
+  }
+
   /**
    * DEVELOPMENT REPORTER
    */
