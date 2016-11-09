@@ -38,7 +38,14 @@ class LoginController {
 
   // Allow users to logout
   * destroy(request, response) {
-    //
+    // Logout the user
+    yield request.auth.logout();
+
+    // Send an alert message
+    yield request.with({ success: 'You have logged out!' }).flash();
+
+    // Redirect to the login form
+    response.redirect('/login');
   }
 }
 
