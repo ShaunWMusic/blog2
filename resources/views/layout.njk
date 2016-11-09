@@ -29,6 +29,12 @@
           </div>
         {% endif %}
 
+        {% if old('success') %}
+          <div class="alert alert-success">
+            <p>{{ old('success') }}</p>
+          </div>
+        {% endif %}
+
         {% block content %}
 
         {% endblock %}
