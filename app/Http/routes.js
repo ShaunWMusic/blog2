@@ -26,3 +26,6 @@ Route.post('/sign-up', 'UserController.store');
 
 Route.get('/login', 'LoginController.create');
 Route.post('/login', 'LoginController.store');
+
+// logout users on ANY type of request to "/logout"
+Route.any('/logout', 'LoginController.destroy');
