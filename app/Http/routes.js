@@ -32,3 +32,7 @@ Route.post('/login', 'LoginController.store');
 
 // Logout users on ANY type of request to "/logout"
 Route.any('/logout', 'LoginController.destroy');
+
+// Register all routes for PostController CRUD
+// This is only available to logged in users!
+Route.resource('/posts', 'PostController').middleware('auth');
