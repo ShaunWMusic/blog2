@@ -1,0 +1,25 @@
+{% extends "layout" %}
+
+{% block content %}
+  {{ form.open({ action: 'LoginController.store' }) }}
+
+  <h2>Login</h2>
+
+  {{ csrfField }}
+
+  <div class="form-group">
+    {{ form.label('email', 'Email address') }}
+    {{ form.text('email', null, { class: 'form-control', placeholder: 'Email' }) }}
+  </div>
+
+  <div class="form-group">
+    {{ form.label('password', 'Password') }}
+    {{ form.password('password', null, { class: 'form-control', placeholder: 'Password' }) }}
+  </div>
+
+  <div class="button">
+    {{ form.submit('Login', null, { class: 'btn btn-primary' }) }}
+  </div>
+
+  {{ form.close() }}
+{% endblock %}
