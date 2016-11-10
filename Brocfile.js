@@ -7,7 +7,7 @@ const Babel = require('broccoli-babel-transpiler');
 const rm = require('broccoli-stew').rm;
 const browserify = require('broccoli-watchify');
 const envify = require('envify');
-// const vueify = require('vueify');
+const vueify = require('vueify');
 
 const stylePaths = [
   'resources/styles',
@@ -18,7 +18,7 @@ const stylePaths = [
 // external files, bundles, and more
 function browserifyInit(b) {
   b.transform(envify);
-  // b.transform(vueify);
+  b.transform(vueify);
 }
 
 const appNoSass = rm('resources/javascript', '**/*.scss');
@@ -28,7 +28,7 @@ const babelScript = new Babel(appNoSass);
 const appScript = browserify(babelScript, {
   browserify: {
     entries: ['./index'],
-    debug: true
+    debug: true,
   },
   cache: false,
   outputFile: 'app.js',

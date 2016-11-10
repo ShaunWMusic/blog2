@@ -1,44 +1,44 @@
 'use strict';
 
-const Api.Comment = use('App/Model/Api.Comment');
+const Comment = use('App/Model/Comment');
 
 class CommentController {
 
   * index(request, response) {
-    const api.Comments = yield Api.Comment.with('author', 'post').fetch();
+    const Comments = yield Comment.with('author', 'post').fetch();
 
-    response.send(api.Comments);
+    response.send(Comments);
   }
 
   * store(request, response) {
     const input = request.only('user_id', 'post_id', 'comment');
-    const api.Comment = yield Api.Comment.create(input);
+    const Comment = yield Comment.create(input);
 
-    response.send(api.Comment);
+    response.send(Comment);
   }
 
   * show(request, response) {
     const id = request.param('id');
-    const api.Comment = yield Api.Comment.with('author', 'post').where({ id }).firstOrFail();
+    const Comment = yield Comment.with('author', 'post').where({ id }).firstOrFail();
 
-    response.send(api.Comment);
+    response.send(Comment);
   }
 
   * update(request, response) {
     const input = request.only('user_id', 'post_id', 'comment');
     const id = request.param('id');
 
-    const api.Comment = yield Api.Comment.with('author', 'post').where({ id }).firstOrFail();
-    api.Comment.fill(input);
-    yield api.Comment.save(input);
+    const Comment = yield Comment.with('author', 'post').where({ id }).firstOrFail();
+    Comment.fill(input);
+    yield Comment.save(input);
 
-    response.send(api.Comment);
+    response.send(Comment);
   }
 
   * destroy(request, response) {
     const id = request.param('id');
-    const api.Comment = yield Api.Comment.query().where({ id }).firstOrFail();
-    yield api.Comment.delete();
+    const Comment = yield Comment.query().where({ id }).firstOrFail();
+    yield Comment.delete();
 
     response.status(204).send();
   }

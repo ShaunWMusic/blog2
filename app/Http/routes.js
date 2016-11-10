@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 /*
 |--------------------------------------------------------------------------
@@ -34,3 +34,7 @@ Route.any('/logout', 'LoginController.destroy');
 
 
 Route.resource('/posts', 'PostController');
+
+
+Route.resource('/api/posts', 'Api/PostController').middleware('auth');
+Route.resource('/api/comments', 'Api/CommentController').middleware('auth');
