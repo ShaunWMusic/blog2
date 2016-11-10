@@ -1,44 +1,44 @@
 'use strict';
 
-const Api.Post = use('App/Model/Api.Post');
+const Post = use('App/Model/Post');
 
 class PostController {
 
   * index(request, response) {
-    const api.Posts = yield Api.Post.with().fetch();
+    const posts = yield Post.with('user').fetch();
 
-    response.send(api.Posts);
+    response.send(posts);
   }
 
   * store(request, response) {
     const input = request.only('user_id', 'slug', 'title', 'posted_at', 'content');
-    const api.Post = yield Api.Post.create(input);
+    const post = yield Post.create(input);
 
-    response.send(api.Post);
+    response.send(post);
   }
 
   * show(request, response) {
     const id = request.param('id');
-    const api.Post = yield Api.Post.with().where({ id }).firstOrFail();
+    const post = yield Post.with('user').where({ id }).firstOrFail();
 
-    response.send(api.Post);
+    response.send(post);
   }
 
   * update(request, response) {
     const input = request.only('user_id', 'slug', 'title', 'posted_at', 'content');
     const id = request.param('id');
 
-    const api.Post = yield Api.Post.with().where({ id }).firstOrFail();
-    api.Post.fill(input);
-    yield api.Post.save(input);
+    const post = yield Post.with('user').where({ id }).firstOrFail();
+    post.fill(input);
+    yield post.save(input);
 
-    response.send(api.Post);
+    response.send(post);
   }
 
   * destroy(request, response) {
     const id = request.param('id');
-    const api.Post = yield Api.Post.query().where({ id }).firstOrFail();
-    yield api.Post.delete();
+    const post = yield Post.query().where({ id }).firstOrFail();
+    yield post.delete();
 
     response.status(204).send();
   }

@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 /*
 |--------------------------------------------------------------------------
@@ -36,3 +36,6 @@ Route.any('/logout', 'LoginController.destroy');
 // Register all routes for PostController CRUD
 // This is only available to logged in users!
 Route.resource('/posts', 'PostController').middleware('auth');
+
+Route.resource('/api/posts', 'Api/PostController').middleware('auth');
+Route.resource('/api/comments', 'Api/CommentController').middleware('auth');
