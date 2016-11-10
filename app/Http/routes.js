@@ -39,3 +39,5 @@ Route.resource('/posts', 'PostController').middleware('auth');
 
 Route.resource('/api/posts', 'Api/PostController').middleware('auth');
 Route.resource('/api/comments', 'Api/CommentController').middleware('auth');
+
+Route.any('*').render('vue').middleware('auth');
