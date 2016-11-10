@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 /*
 |--------------------------------------------------------------------------
@@ -28,8 +28,8 @@ const providers = [
   'adonis-lucid/providers/LucidProvider',
   'adonis-lucid/providers/FactoryProvider',
   'adonis-middleware/providers/AppMiddlewareProvider',
-  'adonis-auth/providers/AuthManagerProvider'
-]
+  'adonis-auth/providers/AuthManagerProvider',
+];
 
 /*
 |--------------------------------------------------------------------------
@@ -48,8 +48,9 @@ const aceProviders = [
   'adonis-ace/providers/CommandProvider',
   'adonis-commands/providers/GeneratorsProvider',
   'adonis-commands/providers/HelperCommandsProvider',
-  'adonis-commands/providers/ReplProvider'
-]
+  'adonis-generators/providers/GeneratorsProvider',
+  'adonis-commands/providers/ReplProvider',
+];
 
 /*
 |--------------------------------------------------------------------------
@@ -74,8 +75,8 @@ const aliases = {
   Middleware: 'Adonis/Src/Middleware',
   Route: 'Adonis/Src/Route',
   Schema: 'Adonis/Src/Schema',
-  View: 'Adonis/Src/View'
-}
+  View: 'Adonis/Src/View',
+};
 
 /*
 |--------------------------------------------------------------------------
@@ -106,7 +107,12 @@ const commands = [
   'Adonis/Commands/Migration:Reset',
   'Adonis/Commands/DB:Seed',
   'Adonis/Commands/Migration:Status',
-  'Adonis/Commands/Key:Generate'
-]
+  'Adonis/Commands/Key:Generate',
+  'AdonisGenerators/Generate:Migration',
+  'AdonisGenerators/Generate:Model',
+  'AdonisGenerators/Generate:Controller',
 
-module.exports = { providers, aceProviders, aliases, commands }
+
+];
+
+module.exports = { providers, aceProviders, aliases, commands };

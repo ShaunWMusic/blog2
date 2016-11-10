@@ -31,3 +31,6 @@ Route.post('/login', 'LoginController.store');
 
 // logout users on ANY type of request to "/logout"
 Route.any('/logout', 'LoginController.destroy');
+
+
+Route.resource('/posts', 'PostController');
