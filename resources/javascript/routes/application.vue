@@ -1,6 +1,10 @@
 <template lang="html">
   <div class="">
-    <router-view></router-view>
+    <router-view
+      :posts="posts"
+      @findAllPosts="findAllPosts"
+      @findPost="findPost"
+    ></router-view>
     <h2>Appy</h2>
   </div>
 </template>
@@ -9,11 +13,28 @@
 export default {
   data() {
     return {
+      posts: [],
     };
   },
 
-  methods: {
+  mounted() {
+    this.findAllPosts();
+  },
 
+  methods: {
+    findAllPosts() {
+      fetch('/api/posts', {
+        credentials: 'same-origin',
+      })
+        .then((r) => r.json())
+        .then((posts) => {
+          this.posts = posts;
+        });
+    },
+
+    findPost() {
+
+    },
   },
 };
 </script>
