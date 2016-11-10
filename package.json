@@ -58,6 +58,7 @@
     "App": "./app"
   },
   "devDependencies": {
+    "adonis-generators": "^0.4.8",
     "nodemon": "^1.11.0",
     "standard": "^8.5.0"
   }
