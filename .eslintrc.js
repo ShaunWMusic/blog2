@@ -8,7 +8,7 @@ module.exports = {
   },
 
   // Uncomment this for vuejs template linting
-  // plugins: [
-  //   'html',
-  // ],
+  plugins: [
+    'html',
+  ],
 }
